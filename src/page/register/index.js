@@ -44,6 +44,7 @@ const Registrasi = () => {
   // action Btn Daftar
   const daftarBtn = async () => {
     const dataFix = form;
+    dataFix.jenis_kelamin = parseInt(dataFix.jenis_kelamin);
     const result = await registerHttp(dataFix);
     if (result.status.kode === "success") {
       setForm({
