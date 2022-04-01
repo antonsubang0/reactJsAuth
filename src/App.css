@@ -28,16 +28,27 @@
   text-align: center;
 }
 
-.group-input {
+.group-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
 
-input.input2, select.input2 {
+.group-input, .group-input1 {
+  display: flex;
+  flex-direction: column;
   width: 48%;
-  padding: 12px 20px;
+  position: relative;
+}
+
+.group-input1 {
+  width: 100%;
+}
+
+input.input, select.input {
+  width: 100%;
+  padding: 10px 15px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -47,23 +58,33 @@ input.input2, select.input2 {
   background-color: #fff;
 }
 
-input.input1 {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: all 1s;
+input.input.danger {
+  border: 1px solid rgb(145, 7, 7);
 }
 
-input.input2.danger {
-  border: 2px solid rgb(145, 7, 7);
+input.input.danger {
+  border: 1px solid rgb(145, 7, 7);
 }
 
-input.input1.danger {
-  border: 2px solid rgb(145, 7, 7);
+.label-danger, .label-danger1, .label-danger2 {
+  position: absolute;
+  padding: 5px;
+  background-color: orange;
+  color: rgb(145, 7, 7) ;
+  border-radius: 5px;
+  right: 5px;
+  font-size: 10px;
+  top: 50px;
+}
+
+.label-danger1 {
+  top: 35px;
+  right: 45px;
+}
+
+.label-danger2 {
+  top: 35px;
+  right: 15px;
 }
 
 .parent-btn {
@@ -112,5 +133,9 @@ input.input1.danger {
   }
   .card-registrasi.login {
     width: 60vw;
+  }
+  .label-danger2 {
+    right: 5px;
+    top: 50px;
   }
 }

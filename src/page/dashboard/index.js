@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   let history = useHistory();
+  // logout
   const logoutBtn = () => {
     localStorage.removeItem("kunci");
     localStorage.removeItem("data");

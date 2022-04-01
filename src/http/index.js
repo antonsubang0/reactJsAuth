@@ -1,5 +1,6 @@
 const APP_URL = "http://202.157.184.201:8000";
 
+//  send via urlencoded
 const loginHttp = async (data) => {
   return new Promise((resolve, reject) => {
     const myHeaders = new Headers();
@@ -23,6 +24,7 @@ const loginHttp = async (data) => {
   });
 };
 
+// send via JSON
 const registerHttp = async (data) => {
   return new Promise((resolve, reject) => {
     const myHeaders = new Headers();

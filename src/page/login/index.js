@@ -33,17 +33,18 @@ const Login = () => {
     localStorage.setItem("data", JSON.stringify(result.data));
     history.replace("/");
   };
-  //   live status danger field
+  // live status danger field
   useEffect(() => {
+    // username
     form.username !== "" && !validateEmail(form.username)
       ? setDanger((danger) => ({ ...danger, username: true }))
       : setDanger((danger) => ({ ...danger, username: false }));
-
+    // password
     form.password !== "" && form.password.length < 6
       ? setDanger((danger) => ({ ...danger, password: true }))
       : setDanger((danger) => ({ ...danger, password: false }));
   }, [form]);
-  //   live status danger Btn Daftar
+  // live status danger Btn Daftar
   useEffect(() => {
     danger.username ||
     danger.password ||
@@ -57,23 +58,39 @@ const Login = () => {
       <div className="card-registrasi login">
         <h3 className="title-registrasi">Login</h3>
         {notif ? <p className="notif danger">{notif}</p> : null}
-        <div className="group-input">
-          <input
-            className={danger.username ? "input1 danger" : "input1"}
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={isiData}
-          />
+        <div className="group-row">
+          <div className="group-input1">
+            <label>Username</label>
+            <input
+              className={danger.username ? "input danger" : "input"}
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={isiData}
+            />
+            {danger.username ? (
+              <div className="label-danger2">Username tidak valid</div>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-        <div className="group-input">
-          <input
-            className={danger.password ? "input1 danger" : "input1"}
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={isiData}
-          />
+        <div className="group-row">
+          <div className="group-input1">
+            <label>Password</label>
+            <input
+              className={danger.password ? "input danger" : "input"}
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={isiData}
+            />
+            {danger.password ? (
+              <div className="label-danger2">Password tidak valid</div>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
         <div className="parent-btn">
           <button

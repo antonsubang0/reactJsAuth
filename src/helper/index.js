@@ -1,10 +1,11 @@
+// helper form
 const formData = (data, id, value) => {
   return {
     ...data,
     [id]: value,
   };
 };
-
+// helper regex email
 const validateEmail = (email) => {
   return String(email)
     .toLowerCase()
@@ -13,4 +14,12 @@ const validateEmail = (email) => {
     );
 };
 
-export { formData, validateEmail };
+const validateName = (nama) => {
+  return String(nama).match(/^[a-zA-Z\s'-]{3,50}$/);
+};
+
+const validateHP = (hp) => {
+  return String(hp).match(/^[0-9]{11,13}$/);
+};
+
+export { formData, validateEmail, validateName, validateHP };
