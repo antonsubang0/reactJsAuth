@@ -66,7 +66,7 @@ input.input.danger {
   border: 1px solid rgb(145, 7, 7);
 }
 
-.label-danger, .label-danger1, .label-danger2 {
+.label-danger, .label-danger1, .label-danger2, .label-danger3 {
   position: absolute;
   padding: 5px;
   background-color: orange;
@@ -85,6 +85,11 @@ input.input.danger {
 .label-danger2 {
   top: 35px;
   right: 15px;
+}
+
+.label-danger3 {
+  top: 35px;
+  right: 40px;
 }
 
 .parent-btn {

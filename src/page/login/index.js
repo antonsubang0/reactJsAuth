@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Input1 } from "../../component/input1";
 import { formData, validateEmail } from "../../helper";
 import { loginHttp } from "../../http";
 
@@ -59,38 +60,28 @@ const Login = () => {
         <h3 className="title-registrasi">Login</h3>
         {notif ? <p className="notif danger">{notif}</p> : null}
         <div className="group-row">
-          <div className="group-input1">
-            <label>Username</label>
-            <input
-              className={danger.username ? "input danger" : "input"}
-              type="text"
-              name="username"
-              placeholder="Username"
-              onChange={isiData}
-            />
-            {danger.username ? (
-              <div className="label-danger2">Username tidak valid</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Input1
+            title={"Username"}
+            isiData={isiData}
+            danger={danger.username}
+            name={"username"}
+            placeholder={"Username"}
+            type={"text"}
+            value={form.username}
+            pesan={"Username tidak valid"}
+          />
         </div>
         <div className="group-row">
-          <div className="group-input1">
-            <label>Password</label>
-            <input
-              className={danger.password ? "input danger" : "input"}
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={isiData}
-            />
-            {danger.password ? (
-              <div className="label-danger2">Password tidak valid</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Input1
+            title={"Password"}
+            isiData={isiData}
+            danger={danger.password}
+            name={"password"}
+            placeholder={"Password"}
+            type={"password"}
+            value={form.password}
+            pesan={"Password tidak valid"}
+          />
         </div>
         <div className="parent-btn">
           <button

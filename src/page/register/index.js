@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Input1, Input2 } from "../../component/input1";
+import { Select2 } from "../../component/select1";
 import {
   formData,
   validateEmail,
@@ -33,6 +35,17 @@ const Registrasi = () => {
     password: false,
     password1: false,
   });
+  const jenisKelamin = [
+    { id: 0, value: 0, title: "Jenis Kelamin" },
+    { id: 1, value: 1, title: "Laki-laki" },
+    { id: 2, value: 2, title: "Perempuan" },
+  ];
+
+  const jenisGroup = [
+    { id: 0, value: "", title: "Pilih Group" },
+    { id: 1, value: "member", title: "Member" },
+    { id: 2, value: "mitra", title: "Mitra" },
+  ];
   // status danger Button Daftar
   const [btnDaftar, setBtnDaftar] = useState(true);
   // status notif
@@ -127,162 +140,102 @@ const Registrasi = () => {
         {notif ? <p className="notif success">{notif}</p> : null}
         {notif ? <p className="notif success">Silahkan Login....</p> : null}
         <div className="group-row">
-          <div className="group-input">
-            <label>First Name</label>
-            <input
-              className={danger.firstname ? "input danger" : "input"}
-              type="text"
-              name="firstname"
-              placeholder="First Name"
-              value={form.firstname}
-              onChange={isiData}
-            />
-            {danger.firstname ? (
-              <div className="label-danger">Minimal 3 huruf</div>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className="group-input">
-            <label>Last Name</label>
-            <input
-              className={danger.lastname ? "input danger" : "input"}
-              type="text"
-              name="lastname"
-              placeholder="Last Name"
-              value={form.lastname}
-              onChange={isiData}
-            />
-            {danger.lastname ? (
-              <div className="label-danger">Minimal 3 huruf</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Input2
+            title={"First Name"}
+            danger={danger.firstname}
+            pesan={"Bukan nama"}
+            name={"firstname"}
+            placeholder={"First Name"}
+            type={"text"}
+            value={form.firstname}
+            isiData={isiData}
+          />
+          <Input2
+            title={"Last Name"}
+            danger={danger.lastname}
+            pesan={"Bukan nama"}
+            name={"lastname"}
+            placeholder={"Last Name"}
+            type={"text"}
+            value={form.lastname}
+            isiData={isiData}
+          />
         </div>
         <div className="group-row">
-          <div className="group-input">
-            <label>Email</label>
-            <input
-              className={danger.email ? "input danger" : "input"}
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={form.email}
-              onChange={isiData}
-            />
-            {danger.email ? (
-              <div className="label-danger">Harus email</div>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className="group-input">
-            <label>No. HP</label>
-            <input
-              className={danger.hp ? "input danger" : "input"}
-              type="text"
-              name="hp"
-              placeholder="No. HP"
-              value={form.hp}
-              onChange={isiData}
-            />
-            {danger.hp ? (
-              <div className="label-danger">Harus No.HP 12 digit</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Input2
+            title={"Email"}
+            danger={danger.email}
+            pesan={"Harus email"}
+            name={"email"}
+            placeholder={"Email"}
+            type={"text"}
+            value={form.email}
+            isiData={isiData}
+          />
+          <Input2
+            title={"No. HP"}
+            danger={danger.hp}
+            pesan={"Harus No.HP"}
+            name={"hp"}
+            placeholder={"No. HP"}
+            type={"text"}
+            value={form.hp}
+            isiData={isiData}
+          />
         </div>
         <div className="group-row">
-          <div className="group-input1">
-            <label>Tanggal Lahir</label>
-            <input
-              className={danger.tgl_lahir ? "input danger" : "input"}
-              type="date"
-              name="tgl_lahir"
-              placeholder="Tanggal Lahir"
-              value={form.tgl_lahir}
-              onChange={isiData}
-            />
-            {danger.tgl_lahir ? (
-              <div className="label-danger1">Tanggal lahir harus diisi</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Input1
+            title={"Tanggal Lahir"}
+            isiData={isiData}
+            danger={danger.tgl_lahir}
+            name={"tgl_lahir"}
+            placeholder={"Tanggal Lahir"}
+            type={"date"}
+            value={form.tgl_lahir}
+            pesan={"Tanggal lahir harus diisi"}
+          />
         </div>
         <div className="group-row">
-          <div className="group-input">
-            <label>Jenis Kelamin</label>
-            <select
-              className={danger.jenis_kelamin ? "input danger" : "input"}
-              name="jenis_kelamin"
-              value={form.jenis_kelamin}
-              onChange={isiData}
-            >
-              <option value="0">Jenis Kelamin</option>
-              <option value="1">Laki-laki</option>
-              <option value="2">Perempuan</option>
-            </select>
-            {danger.jenis_kelamin ? (
-              <div className="label-danger">Jenis kelamin harus diisi</div>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className="group-input">
-            <label>Group</label>
-            <select
-              className={danger.grup ? "input danger" : "input"}
-              name="grup"
-              value={form.grup}
-              onChange={isiData}
-            >
-              <option value="">Pilih Group</option>
-              <option value="member">Member</option>
-              <option value="mitra">Mitra</option>
-            </select>
-            {danger.grup ? (
-              <div className="label-danger">Group harus diisi</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Select2
+            title={"Jenis Kelamin"}
+            danger={danger.jenis_kelamin}
+            name={"jenis_kelamin"}
+            value={form.jenis_kelamin}
+            isiData={isiData}
+            option={jenisKelamin}
+            pesan={"Jenis kelamin harus diisi"}
+          />
+          <Select2
+            title={"Group"}
+            danger={danger.grup}
+            name={"grup"}
+            value={form.grup}
+            isiData={isiData}
+            option={jenisGroup}
+            pesan={"Group harus diisi"}
+          />
         </div>
         <div className="group-row">
-          <div className="group-input">
-            <label>Password</label>
-            <input
-              className={danger.password ? "input danger" : "input"}
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={form.password}
-              onChange={isiData}
-            />
-            {danger.password ? (
-              <div className="label-danger">Minimal 6 character</div>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className="group-input">
-            <label>Konfirm Password</label>
-            <input
-              className={danger.password1 ? "input danger" : "input"}
-              type="password"
-              name="password1"
-              placeholder="Konfirm Password"
-              value={form.password1}
-              onChange={isiData}
-            />
-            {danger.password1 ? (
-              <div className="label-danger">Tidak sama dengan password</div>
-            ) : (
-              <></>
-            )}
-          </div>
+          <Input2
+            title={"Password"}
+            danger={danger.password}
+            pesan={"Minimal 6 character"}
+            name={"password"}
+            placeholder={"Password"}
+            type={"password"}
+            value={form.password}
+            isiData={isiData}
+          />
+          <Input2
+            title={"Konfirm Password"}
+            danger={danger.password1}
+            pesan={"Tidak sama dengan password"}
+            name={"password1"}
+            placeholder={"Konfirm Password"}
+            type={"password"}
+            value={form.password1}
+            isiData={isiData}
+          />
         </div>
         <div className="parent-btn">
           <button
